@@ -1,0 +1,74 @@
+openapi: "3.0.0"
+info:
+  version: 3.0.0
+  title: Example API
+  description: |
+    An example API specification.
+
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      tags:
+        - health
+      description: |
+        Endpoint used to verify connectivity.
+      responses:
+        200:
+          description: Health OK.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /data:
+    get:
+      operationId: getData
+      security:
+        - jwtAuth: []
+      tags:
+        - data
+      description: |
+        Returns some randomly-generated data.
+      responses:
+        200:
+          description: Randomly-generated data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetDataResponse"
+
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      required:
+        - ok
+      properties:
+        ok:
+          type: boolean
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - msg
+      properties:
+        error:
+          type: string
+        msg:
+          type: string
+    GetDataResponse:
+      type: object
+      required:
+        - dataId
+      properties:
+        dataId:
+          type: string
+          format: uuid
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
