@@ -1,5 +1,5 @@
 .gradle
 app/build
-src/main/kotlin/com/example/app/generated/
+app/src/main/kotlin/com/example/app/generated
 .idea
 .kotlin
