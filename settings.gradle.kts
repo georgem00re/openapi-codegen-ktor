@@ -1,2 +1,2 @@
-rootProject.name = "platform-root"
+rootProject.name = "openapi-codegen-ktor"
 include("app")
