@@ -3,3 +3,4 @@ app/build
 app/src/main/kotlin/com/example/app/generated
 .idea
 .kotlin
+.DS_Store
