@@ -1,8 +1,8 @@
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version libs.versions.kotlin.get()
-    kotlin("plugin.serialization") version libs.versions.kotlin.get()
-    id("org.openapi.generator") version "7.0.0"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.openapi.generator)
     application
 }
 
