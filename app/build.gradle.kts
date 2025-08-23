@@ -1,7 +1,7 @@
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.1.10"
-    kotlin("plugin.serialization") version "2.1.10"
+    id("org.jetbrains.kotlin.jvm") version libs.versions.kotlin.get()
+    kotlin("plugin.serialization") version libs.versions.kotlin.get()
     id("org.openapi.generator") version "7.0.0"
     application
 }
@@ -13,32 +13,23 @@ repositories {
     mavenCentral()
 }
 
-val koinVersion = "4.1.0-Beta5"
-val ktorVersion = "3.1.2"
-val logbackVersion = "1.5.6"
-
-val ktorDependencies = listOf(
-    "io.ktor:ktor-serialization-kotlinx-json",
-    "io.ktor:ktor-server-auth-jwt",
-    "io.ktor:ktor-server-auto-head-response",
-    "io.ktor:ktor-server-call-logging",
-    "io.ktor:ktor-server-cio",
-    "io.ktor:ktor-server-compression",
-    "io.ktor:ktor-server-content-negotiation",
-    "io.ktor:ktor-server-cors",
-    "io.ktor:ktor-server-default-headers",
-    "io.ktor:ktor-server-hsts",
-    "io.ktor:ktor-server-status-pages",
-)
-
 dependencies {
-    ktorDependencies.forEach { implementation("$it:$ktorVersion") }
-    implementation("io.insert-koin:koin-ktor3:$koinVersion")
-    implementation("ch.qos.logback:logback-classic:${logbackVersion}")
+    implementation(libs.ktor.serialization.json)
+    implementation(libs.ktor.server.auth.jwt)
+    implementation(libs.ktor.server.auto.head)
+    implementation(libs.ktor.server.call.logging)
+    implementation(libs.ktor.server.cio)
+    implementation(libs.ktor.server.compression)
+    implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.ktor.server.cors)
+    implementation(libs.ktor.server.default.headers)
+    implementation(libs.ktor.server.hsts)
+    implementation(libs.ktor.server.status.pages)
+    implementation(libs.koin.ktor)
+    implementation(libs.logback.classic)
 
-    // Test dependencies.
-    testImplementation("io.mockk:mockk:1.13.9")
-    testImplementation("io.insert-koin:koin-test-junit5:$koinVersion")
+    testImplementation(libs.mockk)
+    testImplementation(libs.koin.test)
 }
 
 tasks.test {
