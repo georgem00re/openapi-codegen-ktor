@@ -14,6 +14,7 @@ repositories {
 
 val koinVersion = "4.1.0-Beta5"
 val ktorVersion = "3.1.2"
+val logbackVersion = "1.5.6"
 
 val ktorDependencies = listOf(
     "io.ktor:ktor-serialization-kotlinx-json",
@@ -32,6 +33,7 @@ val ktorDependencies = listOf(
 dependencies {
     ktorDependencies.forEach { implementation("$it:$ktorVersion") }
     implementation("io.insert-koin:koin-ktor3:$koinVersion")
+    implementation("ch.qos.logback:logback-classic:${logbackVersion}")
 
     // Test dependencies.
     testImplementation("io.mockk:mockk:1.13.9")
