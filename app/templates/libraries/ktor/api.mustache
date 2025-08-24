@@ -15,6 +15,7 @@ import io.ktor.server.auth.authenticate
 {{/hasAuthMethods}}
 {{#imports}}import {{import}}
 {{/imports}}
+import io.ktor.server.request.receive
 
 {{#operations}}
 interface {{classname}}Module {
